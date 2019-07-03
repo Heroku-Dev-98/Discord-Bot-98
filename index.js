@@ -11,12 +11,6 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
 }
-const ecoFiles = fs.readdirSync('./Currency').filter(file => file.endsWith('.js'));
-
-for (const file of ecoFiles) {
-	const ecocommand = require(`./Currency/${file}`);
-	client.ecocomm.set(ecocommand.name, ecocommand);
-}
 
 const cooldowns = new Discord.Collection();
 client.on('message', message => {
