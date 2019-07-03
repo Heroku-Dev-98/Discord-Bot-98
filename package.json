@@ -1,0 +1,39 @@
+{
+  "name": "discord-weather",
+  "version": "8.5.9",
+  "description": "Discord Weather: Get Accurate Weather In Your Discord Server!",
+  "main": "index.js",
+  "engines": {
+    "node": "11.11.0",
+    "npm": "6.7.0"
+  },
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "node-fetch": "^2.6.0",
+    "querystring": "^0.2.0",
+    "sequelize": "^5.9.2",
+    "sqlite3": "^4.0.9",
+    "urban": "^0.3.2",
+    "util": "^0.12.0",
+    "weather-js": "^2.0.0",
+    "ytdl-core": "^0.29.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "heroku": "git push heroku master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brahaha1435/Discord-Weather.git"
+  },
+  "keywords": [
+    "heroku",
+    "discord.js"
+  ],
+  "author": "Brahaha#1435",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brahaha1435/Discord-Weather/issues"
+  }
+}
