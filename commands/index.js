@@ -13,6 +13,6 @@ bot.on('message', message => {
 	}
 });
 bot.on('ready', () => {
-	console.log(`Total Messages: ${mcount}-${m}`);
+	console.log(`Total Messages: ${mcount}`);
 });
 bot.login(token);
