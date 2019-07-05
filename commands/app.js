@@ -31,7 +31,7 @@ Reflect.defineProperty(currency, 'getBalance', {
 client.once('ready', async () => {
 	const storedBalances = await Users.findAll();
 	storedBalances.forEach(b => currency.set(b.user_id, b));
-	console.log('Inventory Running');
+	console.log('Economy Running!');
 });
 
 client.on('message', async message => {
