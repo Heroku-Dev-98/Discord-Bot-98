@@ -10,9 +10,11 @@ bot.on('message', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) {
 		mcount.m++;
 		m.mmm++;
+	} else if (message.content === `${prefix}messages`) {
+		message.channel.send(`Total Messages: ${mcount}`);
 	}
 });
+bot.login(token);
 bot.on('ready', () => {
 	console.log(`Total Messages: ${mcount}`);
 });
-bot.login(token);

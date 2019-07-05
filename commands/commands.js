@@ -15,6 +15,7 @@ module.exports = {
 			.addField('Fun Commands:', `${prefix}8-ball (question) ${prefix}randomcat ${prefix}coinflip`)
 			.addField('Info Commands:', `${prefix}bot-info ${prefix}server-info ${prefix}user-info ${prefix}prefix`)
 			.addField('Emote Commands', `${prefix}server-emojis ${prefix}yes/no ${prefix}school ${prefix}birthday ${prefix}ok ${prefix}fistbump2 ${prefix}fistbump ${prefix}joy`)
+			.addField('Music Commands:', `${prefix}play (song) ${prefix}skip ${prefix}stop ${prefix}dictionary (word) ${prefix}ping ${prefix}avatar ${prefix}invite-bot ${prefix}help ${prefix}speed ${prefix}beep ${prefix}login ${prefix}logout`)
 			.addField('Other Commands:', `${prefix}messages ${prefix}commands ${prefix}urban (word) ${prefix}dictionary (word) ${prefix}ping ${prefix}avatar ${prefix}invite-bot ${prefix}help ${prefix}speed ${prefix}beep ${prefix}login ${prefix}logout`);
 		message.channel.send(embed).catch(err => console.log(err));
 

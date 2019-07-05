@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix, token } = require('./config.json');
+const { prefix, token, DefaultColor } = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.ecocomm = new Discord.Collection();
@@ -11,6 +11,7 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
 }
+
 
 const cooldowns = new Discord.Collection();
 client.on('message', message => {
@@ -25,7 +26,8 @@ client.on('message', message => {
 	if (!command) return;
 
 	if (command.guildOnly && message.channel.type !== 'text') {
-		return message.reply('I can\'t execute that command inside DMs!');
+		// eslint-disable-next-line quotes
+		message.channel.send("I can't execute that command in DM's!");
 	}
 
 	if (command.args && !args.length) {
@@ -63,7 +65,12 @@ client.on('message', message => {
 	}
 	catch (error) {
 		console.error(error);
-		message.reply('there was an error trying to execute that command!');
+		const exampleEmbed = new Discord.RichEmbed()
+			.setColor(DefaultColor)
+			.setTitle('There was an error trying to execute that command!')
+			.setTimestamp()
+			.setFooter(`${message.author.username}`);
+		message.channel.send(exampleEmbed);
 	}
 });
 client.once('ready', () => {
