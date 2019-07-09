@@ -3,14 +3,25 @@ const Discord = require('discord.js');
 const { prefix, token, DefaultColor } = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-client.ecocomm = new Discord.Collection();
 
-fs.readdirSync('./music').filter(file => file.endsWith('.js'));
-fs.readdirSync('./economy').filter(file => file.endsWith('.js'));
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
+}
+
+const musicFiles = fs.readdirSync('./music').filter(file => file.endsWith('.js'));
+
+for (const file of musicFiles) {
+	const command = require(`./music/${file}`);
+	client.commands.set(command.name, command);
+}
+
+const economyFiles = fs.readdirSync('./economy').filter(file => file.endsWith('.js'));
+
+for (const file of economyFiles) {
+	const command = require(`./economy/${file}`);
 	client.commands.set(command.name, command);
 }
 
