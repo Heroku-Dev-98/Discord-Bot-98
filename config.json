@@ -2,5 +2,6 @@
     "prefix": ">",
     "token": "NTgzMzY2NTcyNTMwMjA0Njgz.XRI_Mg.WHdGvaarqcSQRgmX5c5LJ5t6ATE",
     "avatar": "https://cdn.discordapp.com/attachments/586267030949462017/586320959242371073/Weather_Circle.png",
-    "DefaultColor": "0x0094FF"
+    "DefaultColor": "0x0094FF",
+    "GOOGLE_API_KEY": "AIzaSyC4KSDwjrkXxiUGp5HT_SNNLLpVExIyt8I"
 }

@@ -13,7 +13,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 	logging: false,
 	operatorsAliases: false,
 	// SQLite only
-	storage: 'database.sqlite',
+	storage: 'tags.sqlite',
 });
 
 const Tags = sequelize.define('tags', {

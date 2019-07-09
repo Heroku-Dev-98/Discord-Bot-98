@@ -5,6 +5,8 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.ecocomm = new Discord.Collection();
 
+fs.readdirSync('./music').filter(file => file.endsWith('.js'));
+fs.readdirSync('./economy').filter(file => file.endsWith('.js'));
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
@@ -46,7 +48,7 @@ client.on('message', message => {
 
 	const now = Date.now();
 	const timestamps = cooldowns.get(command.name);
-	const cooldownAmount = (command.cooldown || 1) * 10;
+	const cooldownAmount = (command.cooldown || 1) * 5;
 
 	if (timestamps.has(message.author.id)) {
 		const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
@@ -67,16 +69,15 @@ client.on('message', message => {
 		console.error(error);
 		const exampleEmbed = new Discord.RichEmbed()
 			.setColor(DefaultColor)
-			.setTitle('There was an error trying to execute that command!')
-			.setTimestamp()
-			.setFooter(`${message.author.username}`);
+			.setTitle('There was an error trying to execute that command!');
 		message.channel.send(exampleEmbed);
 	}
 });
+
 client.once('ready', () => {
-	console.log(+client.users.size + ' Total Users  ');
-	console.log(+client.guilds.size + ' Total Servers  ');
-	console.log(+client.channels.size + ' Total Channels  ');
+	console.log(`${client.users.size} Total Users`);
+	console.log(`${client.guilds.size} Total Servers`);
+	console.log(`${client.channels.size} Total Channels`);
 });
 
 client.on('guildCreate', guild => {
@@ -86,7 +87,9 @@ client.on('guildCreate', guild => {
 client.on('guildDelete', guild => {
 	console.log(`I have been removed from: ${guild.name} (id: ${guild.id}) (members: ${guild.memberCount})`);
 });
+
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
+
 client.on('ready', () => {
 	client.user.setPresence({
 		game: {
@@ -96,4 +99,5 @@ client.on('ready', () => {
 		status: 'online',
 	});
 });
+
 client.login(token);

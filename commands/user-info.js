@@ -10,6 +10,7 @@ module.exports = {
 			.setColor(0x0094FF)
 			.addField('Username:', `${message.author.username}`, true)
 			.addField('Tag:', `${message.author.tag}`, true)
-			.addField('ID:', `${message.author.id}`, true);
+			.addField('ID:', `${message.author.id}`, true)
+			.addField(`HEX color: ${message.author.displayHexColor}`);
 		message.channel.send(UserInfoEmbed).catch(err => console.log(err));
 	} };
