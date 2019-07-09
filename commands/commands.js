@@ -14,7 +14,7 @@ client.on('message', message => {
 				.setColor(DefaultColor)
 				.addField('Weather Commands:', `${prefix}weather (city) ${prefix}EAS`)
 				.addField('Random Commands:', `${prefix}commands ${prefix}urban (word) ${prefix}dictionary (word) ${prefix}ping ${prefix}avatar ${prefix}invite-bot ${prefix}help`)
-				.addField('Fun Commands:', `${prefix}8-ball (question) ${prefix}randomcat ${prefix}coinflip`)
+				.addField('Fun Commands:', `${prefix}rps-help ${prefix}rps scissors ${prefix}rps rock ${prefix}rps paper ${prefix}8-ball (question) ${prefix}randomcat ${prefix}coinflip`)
 				.addField('Info Commands:', `${prefix}bot-info ${prefix}server-info ${prefix}user-info ${prefix}prefix`)
 				.addField('Economy Commands:', `${prefix}balance ${prefix}inventory ${prefix}transfer (user & amount) ${prefix}buy ${prefix}items ${prefix}leaderboard`)
 				.addField('Emote Commands', `${prefix}server-emojis ${prefix}yes/no ${prefix}school ${prefix}birthday ${prefix}ok ${prefix}fistbump2 ${prefix}fistbump ${prefix}joy`)
@@ -35,7 +35,7 @@ client.on('message', message => {
 				.addField('Info Commands:', `${prefix}bot-info ${prefix}server-info ${prefix}user-info ${prefix}prefix`)
 				.addField('Economy Commands:', `${prefix}balance ${prefix}inventory ${prefix}transfer (user & amount) ${prefix}buy ${prefix}items ${prefix}leaderboard`)
 				.addField('Emote Commands', `${prefix}server-emojis ${prefix}yes/no ${prefix}school ${prefix}birthday ${prefix}ok ${prefix}fistbump2 ${prefix}fistbump ${prefix}joy`)
-				.addField('Music Commands:', `${prefix}leave ${prefix}pause ${prefix}play ${prefix}queqe ${prefix}remove-song ${prefix}resume ${prefix}shuffle ${prefix}skip ${prefix}skip-all ${prefix}skip-to`)
+				.addField('Music Commands:', `${prefix}play (Youtube URL or Song Name) ${prefix}skip ${prefix}stop`)
 				.addField('Other Commands:', `${prefix}messages ${prefix}commands ${prefix}urban (word) ${prefix}dictionary (word) ${prefix}ping ${prefix}avatar ${prefix}invite-bot ${prefix}help ${prefix}speed ${prefix}beep ${prefix}login ${prefix}logout`)
 				.setTimestamp()
 				.setFooter(`${message.author.username}`);
