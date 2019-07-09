@@ -1,3 +1,4 @@
+require('events').EventEmitter.prototype._maxListeners = 0;
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token, DefaultColor } = require('./config.json');
@@ -100,7 +101,7 @@ client.on('guildDelete', guild => {
 });
 
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
-
+process.setMaxListeners(0);
 client.on('ready', () => {
 	client.user.setPresence({
 		game: {

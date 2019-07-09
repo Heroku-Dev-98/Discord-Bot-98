@@ -35,7 +35,7 @@ client.on('message', message => {
 	const Permission26 = args[26];
 	const Permission27 = args[27];
 	if (command === 'create-role') {
-		if (!message.member.permissions.has('ADMINISTRATOR')) {
+		if (!message.member.permissions.has('ADMINISTRATOR', 'MANAGE_ROLES_OR_PERMISSIONS')) {
 			const rInfoEmbed = new Discord.RichEmbed()
 				.addField('You need to be an Administrator to use this command!')
 				.setColor(0x0094FF);
@@ -93,7 +93,7 @@ client.on('message', message => {
 		if (command === 'y') {
 			const serInfoEmbed = new Discord.RichEmbed()
 				.setColor(0x0094FF)
-				.addField('Role Created');
+				.addField(`Role: ${RoleName} Created`);
 			message.channel.send(serInfoEmbed).catch(err => console.log(err));
 			message.guild.createRole({ name: `${RoleName}`, permissions: [`${Permission1}`, `${Permission2}`, `${Permission3}`, `${Permission4}`, `${Permission5}`, `${Permission6}`, `${Permission7}`, `${Permission7}`, `${Permission8}`, `${Permission9}`, `${Permission10}`, `${Permission11}`, `${Permission12}`, `${Permission13}`, `${Permission14}`, `${Permission15}`, `${Permission16}`, `${Permission17}`, `${Permission18}`, `${Permission19}`, `${Permission20}`, `${Permission21}`, `${Permission22}`, `${Permission23}`, `${Permission24}`, `${Permission25}`, `${Permission26}`, `${Permission27}`] });
 			console.log(`${message.author.username} used the ${prefix}y command`);
