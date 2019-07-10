@@ -91,6 +91,9 @@ client.once('ready', () => {
 	console.log(`${client.guilds.size} Total Servers`);
 	console.log(`${client.channels.size} Total Channels`);
 });
+client.once('ready', () => {
+	console.log(client.username);
+});
 
 client.on('guildCreate', guild => {
 	console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
@@ -105,7 +108,7 @@ process.setMaxListeners(0);
 client.on('ready', () => {
 	client.user.setPresence({
 		game: {
-			name: '>weather (city)',
+			name: `${prefix}weather (city)`,
 			type: 'WATCHING',
 		},
 		status: 'online',
