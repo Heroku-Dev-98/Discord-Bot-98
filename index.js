@@ -91,7 +91,7 @@ client.once('ready', () => {
 	console.log(`${client.channels.size} Total Channels`);
 });
 client.once('ready', () => {
-	console.log(client.username);
+	console.log(`${client.user.tag}`);
 });
 
 client.on('guildCreate', guild => {
