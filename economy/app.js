@@ -5,7 +5,7 @@ const { Users, CurrencyShop } = require('./dbObjects');
 const { Op } = require('sequelize');
 const currency = new Discord.Collection();
 // eslint-disable-next-line no-unused-vars
-const { prefix, token, DefaultColor, avatarURL } = require('../config.json');
+const { prefix, token, DefaultColor, avatarURL } = require('./config.json');
 
 Reflect.defineProperty(currency, 'add', {
 	value: async function add(id, amount) {
