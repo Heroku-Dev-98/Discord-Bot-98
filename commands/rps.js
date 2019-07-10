@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-.prefix = require('../config.json');
 exports.run = (client, message, args) => {
 
 	let rock2 = ['Paper! I win!', 'Scissors! You win!'];
