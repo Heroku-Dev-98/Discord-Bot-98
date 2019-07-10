@@ -1,10 +1,9 @@
 const Discord = require('discord.js');
-const { prefix, token } = require('../config.json');
 
 const client = new Discord.Client();
 
 client.on('message', message => {
-	const args = message.content.slice(prefix.length).trim().split(/ +/g);
+	const args = message.content.slice(process.env.prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
 	const RoleName = args[0];
 	const Permission1 = args[1];
@@ -43,7 +42,7 @@ client.on('message', message => {
 		}
 		const UserInfoEmbed = new Discord.RichEmbed()
 			.setColor(0x0094FF)
-			.addField(`Please use the command ${prefix}c-role followed with the Name of the role, and Permissions. Example: ${prefix}c-role NAME-HERE PERMISSION(S)-HERE`)
+			.addField(`Please use the command ${process.env.prefix}c-role followed with the Name of the role, and Permissions. Example: ${process.env.prefix}c-role NAME-HERE PERMISSION(S)-HERE`)
 			.addField('List of Permissions: (KEEP THE CAPS!)')
 			.addField('ADMINISTRATOR READ_MESSAGES SEND_MESSAGES')
 			.addField('MANAGE_EMOJIS MANAGE_MESSAGES MANAGE_ROLES_OR_PERMISSIONS')
@@ -54,11 +53,11 @@ client.on('message', message => {
 			.addField('EXTERNAL_EMOJIS DEAFEN_MEMBERS SPEAK')
 			.addField('CONNECT MUTE_MEMBERS MOVE_MEMBERS');
 		message.channel.send(UserInfoEmbed).catch(err => console.log(err));
-		console.log(`${message.author.username} used the ${prefix}create-role command`);
+		console.log(`${message.author.username} used the ${process.env.prefix}create-role command`);
 	} else if (command === 'c-role') {
 		const Embed = new Discord.RichEmbed()
 			.setColor(0x0094FF)
-			.setTitle(`Is this correct? Use command ${prefix}Y or ${prefix}N`)
+			.setTitle(`Is this correct? Use command ${process.env.prefix}Y or ${process.env.prefix}N`)
 			.addField(`Role Name: ${RoleName}`)
 			.addField('Permissions:')
 			.addField(`${Permission1}`)
@@ -89,21 +88,21 @@ client.on('message', message => {
 			.addField(`${Permission26}`)
 			.addField(`${Permission27}`);
 		message.channel.send(Embed).catch(err => console.log(err));
-		console.log(`${message.author.username} used the ${prefix}c-role command`);
+		console.log(`${message.author.username} used the ${process.env.prefix}c-role command`);
 		if (command === 'y') {
 			const serInfoEmbed = new Discord.RichEmbed()
 				.setColor(0x0094FF)
 				.addField(`Role: ${RoleName} Created`);
 			message.channel.send(serInfoEmbed).catch(err => console.log(err));
 			message.guild.createRole({ name: `${RoleName}`, permissions: [`${Permission1}`, `${Permission2}`, `${Permission3}`, `${Permission4}`, `${Permission5}`, `${Permission6}`, `${Permission7}`, `${Permission7}`, `${Permission8}`, `${Permission9}`, `${Permission10}`, `${Permission11}`, `${Permission12}`, `${Permission13}`, `${Permission14}`, `${Permission15}`, `${Permission16}`, `${Permission17}`, `${Permission18}`, `${Permission19}`, `${Permission20}`, `${Permission21}`, `${Permission22}`, `${Permission23}`, `${Permission24}`, `${Permission25}`, `${Permission26}`, `${Permission27}`] });
-			console.log(`${message.author.username} used the ${prefix}y command`);
+			console.log(`${message.author.username} used the ${process.env.prefix}y command`);
 		} else if (command === 'n') {
 			const serInfoEmbed = new Discord.RichEmbed()
 				.setColor(0x0094FF)
 				.addField('Canceled');
 			message.channel.send(serInfoEmbed).catch(err => console.log(err));
-			console.log(`${message.author.username} used the ${prefix}n command`);
+			console.log(`${message.author.username} used the ${process.env.prefix}n command`);
 		}
 	}});
 
-client.login(token);
+client.login(process.env.token);

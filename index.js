@@ -1,7 +1,6 @@
 require('events').EventEmitter.prototype._maxListeners = 0;
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix, token, DefaultColor } = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
@@ -29,9 +28,9 @@ for (const file of economyFiles) {
 
 const cooldowns = new Discord.Collection();
 client.on('message', message => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
 
-	const args = message.content.slice(prefix.length).split(/ +/);
+	const args = message.content.slice(process.env.prefix.length).split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
 	const command = client.commands.get(commandName)
@@ -48,7 +47,7 @@ client.on('message', message => {
 		let reply = `You didn't provide any arguments, ${message.author.username}!`;
 
 		if (command.usage) {
-			reply += `The proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+			reply += `The proper usage would be: \`${process.env.prefix}${command.name} ${command.usage}\``;
 		}
 
 		return message.channel.send(reply).catch(err => console.log(err));
@@ -80,7 +79,7 @@ client.on('message', message => {
 	catch (error) {
 		console.error(error);
 		const exampleEmbed = new Discord.RichEmbed()
-			.setColor(DefaultColor)
+			.setColor(process.env.DefaultColor)
 			.setTitle('There was an error trying to execute that command!');
 		message.channel.send(exampleEmbed);
 	}
@@ -108,11 +107,11 @@ process.setMaxListeners(0);
 client.on('ready', () => {
 	client.user.setPresence({
 		game: {
-			name: `${prefix}weather (city)`,
+			name: `${process.env.prefix}weather (city)`,
 			type: 'WATCHING',
 		},
 		status: 'online',
 	});
 });
 
-client.login(token);
+client.login(process.env.token);

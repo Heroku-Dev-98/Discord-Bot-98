@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 // eslint-disable-next-line no-unused-vars
-const { prefix, token, DefaultColor, avatarURL } = require('../config.json');
+
 module.exports = {
 	name: 'invite-bot',
 	description: 'TX Bot Invite Link',
@@ -9,7 +9,7 @@ module.exports = {
 		const invitebotEmbed = new Discord.RichEmbed()
 			.setColor(0x0094FF)
 			.setTitle('Invite link:')
-			.setThumbnail(`${avatarURL}`)
+			.setThumbnail(process.env.avatarURL)
 			.addField('https://discordapp.com/api/oauth2/authorize?client_id=583366572530204683&permissions=2146958833&scope=bot')
 			.setTimestamp;
 		message.channel.send({ invitebotEmbed });

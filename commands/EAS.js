@@ -1,15 +1,15 @@
 // eslint-disable-next-line no-unused-vars
-const { prefix, token, DefaultColor, avatarURL } = require('../config.json');
+
 module.exports = {
 	name: 'eas',
 	description: 'EAS-info (Emergency-Alert-System)',
 	// eslint-disable-next-line no-unused-vars
 	execute(client, kayn, REGIONS, config, message, args, con, guilds) {
 		message.channel.send({ embed: {
-			color: `${DefaultColor}`,
+			color: `${process.env.DefaultColor}`,
 			title: '',
 			thumbnail: {
-				url: `${avatarURL}`,
+				url: process.env.avatarURL,
 			},
 			fields: [
 				{

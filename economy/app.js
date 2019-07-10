@@ -5,7 +5,6 @@ const { Users, CurrencyShop } = require('./dbObjects');
 const { Op } = require('sequelize');
 const currency = new Discord.Collection();
 // eslint-disable-next-line no-unused-vars
-const { prefix, token, DefaultColor, avatarURL } = require('./config.json');
 
 Reflect.defineProperty(currency, 'add', {
 	value: async function add(id, amount) {
@@ -37,8 +36,8 @@ client.on('message', async message => {
 	if (message.author.bot) return;
 	currency.add(message.author.id, 5);
 
-	if (!message.content.startsWith(prefix)) return;
-	const input = message.content.slice(prefix.length).trim();
+	if (!message.content.startsWith(process.env.prefix)) return;
+	const input = message.content.slice(process.env.prefix.length).trim();
 	if (!input.length) return;
 	const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
 	if (command === 'balance') {
@@ -96,4 +95,4 @@ client.on('message', async message => {
 	}
 });
 
-client.login(token);
+client.login(process.env.token);

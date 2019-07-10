@@ -14,6 +14,5 @@ module.exports = {
 
 		message.channel.send(avatarList).catch(err => console.log(err));
 		// eslint-disable-next-line no-unused-vars
-		const { prefix, token, DefaultColor, avatarURL } = require('.client.login(token);.json');
 	},
 };

@@ -3,7 +3,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const weather = require('weather-js');
 // eslint-disable-next-line no-unused-vars
-const { prefix, token, DefaultColor, avatarURL } = require('../config.json');
 const errorMessage = 'Please enter a valid location';
 client.on('error', console.error);
 client.on('message', message => {
@@ -11,10 +10,10 @@ client.on('message', message => {
 	const msg = message.content.toUpperCase();
 	// eslint-disable-next-line no-unused-vars
 	const sender = message.author.username;
-	const cont = message.content.slice(prefix.length).split(' ');
+	const cont = message.content.slice(process.env.prefix.length).split(' ');
 	const args = cont.slice(1);
 	client.on('error', console.error);
-	if (msg.startsWith(`${prefix}WEATHER`)) {
+	if (msg.startsWith(`${process.env.prefix}WEATHER`)) {
 
 		weather.find({ search: args.join(' '), degreeType: 'F' }, function(err, result) {
 			if (err) console.log(err);
@@ -42,4 +41,4 @@ client.on('message', message => {
 	}
 
 });
-client.login(token);
+client.login(process.env.token);

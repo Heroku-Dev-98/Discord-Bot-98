@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const { avatarURL, DefaultColor } = require('../config.json');
 module.exports = {
 	name: 'bot-info',
 	description: 'Discord Weather Info',
@@ -7,8 +6,8 @@ module.exports = {
 	execute(client, kayn, REGIONS, config, message, args, con, guilds) {
 		const BotInfoEmbed = new Discord.RichEmbed()
 			.setDescription('Bot-Info:')
-			.setThumbnail(`${avatarURL}`)
-			.setColor(DefaultColor)
+			.setThumbnail(process.env.avatarURL)
+			.setColor(process.env.DefaultColor)
 			.addField('Language:', 'JavaScript')
 			.addField('Node.js:', 'v11.11.0')
 			.addField('Npm:', '6.7.0',)

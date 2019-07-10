@@ -1,11 +1,10 @@
 const Discord = require('discord.js');
-const { prefix, token } = require('../config.json');
 const client = new Discord.Client({
 	disableEveryone: true,
 });
 
 client.on('message', message => {
-	if (message.content.startsWith(`${prefix}8-ball`)) {
+	if (message.content.startsWith(`${process.env.prefix}8-ball`)) {
 		const outcomes = [
 			'I`m not sure if you should do that...',
 			'Maybe...',
@@ -27,4 +26,4 @@ client.on('message', message => {
 	}
 });
 
-client.login(token);
+client.login(process.env.token);

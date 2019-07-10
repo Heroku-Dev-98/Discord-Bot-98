@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const Sequelize = require('sequelize');
 
 const client = new Discord.Client();
-const PREFIX = '>';
 client.once('ready', () => {
 	console.log('Tags Running');
 });
@@ -12,7 +11,6 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 	dialect: 'sqlite',
 	logging: false,
 	operatorsAliases: false,
-	// SQLite only
 	storage: 'tags.sqlite',
 });
 
@@ -31,20 +29,12 @@ const Tags = sequelize.define('tags', {
 });
 
 client.once('ready', () => {
-	/*
-	 * equivalent to: CREATE TABLE tags(
-	 * name VARCHAR(255),
-	 * description TEXT,
-	 * username VARCHAR(255),
-	 * usage INT
-	 * );
-	 */
 	Tags.sync();
 });
 
 client.on('message', async message => {
-	if (message.content.startsWith(PREFIX)) {
-		const input = message.content.slice(PREFIX.length).split(' ');
+	if (message.content.startsWith(process.env.prefix)) {
+		const input = message.content.slice(process.env.prefix.length).split(' ');
 		const command = input.shift();
 		const commandArgs = input.join(' ');
 
@@ -96,7 +86,6 @@ client.on('message', async message => {
 		else if (command === 'taginfo') {
 			const tagName = commandArgs;
 
-			// equivalent to: SELECT * FROM tags WHERE name = 'tagName' LIMIT 1;
 			const tag = await Tags.findOne({ where: { name: tagName } });
 			if (tag) {
 				return message.channel.send(`${tagName} was created by ${tag.username} at ${tag.createdAt} and has been used ${tag.usage_count} times.`);
@@ -121,4 +110,4 @@ client.on('message', async message => {
 	}
 });
 
-client.login('NTYyNzU2MTQ1Nzk0Nzc3MTAy.XKUlkg.C6MZQayimZeasjUvdzBKxg7wPKA');
+client.login(process.env.token);

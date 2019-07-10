@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const prefix = require('../config.json');
+.prefix = require('../config.json');
 exports.run = (client, message, args) => {
 
 	let rock2 = ['Paper! I win!', 'Scissors! You win!'];
@@ -29,16 +29,16 @@ exports.run = (client, message, args) => {
 		.addField('You choose', `${args[0]}`)
 		.addField('I choose', scissors2[scissors1]);
 
-	if (message.content === `${prefix}rps rock`) message.channel.send(rock);
-	if (message.content === `${prefix}rps Rock`) message.channel.send(rock);
+	if (message.content === `${process.env.prefix}rps rock`) message.channel.send(rock);
+	if (message.content === `${process.env.prefix}rps Rock`) message.channel.send(rock);
 
-	if (message.content === `${prefix}rps paper`) message.channel.send(paper);
-	if (message.content === `${prefix}rps Paper`) message.channel.send(paper);
+	if (message.content === `${process.env.prefix}rps paper`) message.channel.send(paper);
+	if (message.content === `${process.env.prefix}rps Paper`) message.channel.send(paper);
 
-	if (message.content === `${prefix}rps scissors`) message.channel.send(scissors);
-	if (message.content === `${prefix}rps Scissors`) message.channel.send(scissors);
+	if (message.content === `${process.env.prefix}rps scissors`) message.channel.send(scissors);
+	if (message.content === `${process.env.prefix}rps Scissors`) message.channel.send(scissors);
 
 
-	if (message.content === `${prefix}rps-help`) message.channel.send('Options: ``Rock``, ``Paper``, ``Scissors``. **Usage: -rps <option>**');
+	if (message.content === `${process.env.prefix}rps-help`) message.channel.send('Options: ``Rock``, ``Paper``, ``Scissors``. **Usage: -rps <option>**');
 
 };
