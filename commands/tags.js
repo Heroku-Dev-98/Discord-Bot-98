@@ -2,9 +2,6 @@ const Discord = require('discord.js');
 const Sequelize = require('sequelize');
 
 const client = new Discord.Client();
-client.once('ready', () => {
-	console.log('Tags Running');
-});
 
 const sequelize = new Sequelize('database', 'username', 'password', {
 	host: 'localhost',
