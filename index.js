@@ -1,4 +1,9 @@
 require('events').EventEmitter.prototype._maxListeners = 0;
+var m = {
+	count: 0,
+	startups: 0,
+	errors: 0,
+};
 const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -29,7 +34,9 @@ for (const file of economyFiles) {
 const cooldowns = new Discord.Collection();
 client.on('message', message => {
 	if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
-
+	if (message.content.startsWith(process.env.prefix) || message.author.bot) {
+		m.count++;
+	}
 	const args = message.content.slice(process.env.prefix.length).split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
@@ -89,9 +96,8 @@ client.once('ready', () => {
 	console.log(`${client.users.size} Total Users`);
 	console.log(`${client.guilds.size} Total Servers`);
 	console.log(`${client.channels.size} Total Channels`);
-});
-client.once('ready', () => {
 	console.log(`${client.user.tag}`);
+	console.log(`Total Messages: ${m.count}`);
 });
 
 client.on('guildCreate', guild => {
