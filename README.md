@@ -15,3 +15,5 @@ E-Mail: discorddeveloper98@gmail.com
 Username: Heroku Developer
 Password: Heroku-Dev-98
 got to the settings tab on this page and scroll down. click "Make Private"
+
+PS: i added a fortnite command!
