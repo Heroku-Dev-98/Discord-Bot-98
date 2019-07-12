@@ -19,3 +19,4 @@ got to the settings tab on this page and scroll down. click "Make Private"
 PS: i added a fortnite command!
 
 also, edit the code in github. and it will automatically deploy it!
+For a tutorial, check out https://discordjs.guide , and lookup things on google.
